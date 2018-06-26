@@ -8,6 +8,7 @@ def joke(r):
     req = urllib.request.Request("http://api.icndb.com/jokes/"+r)
     try:
         response = urllib.request.urlopen(req)
+        #with urllib.request.urlopen(req) as response:
     except urllib.error.HTTPError as e:
         print("HTTP Error code: ", e.code)
     except urllib.error.URLError as e:
@@ -19,13 +20,14 @@ def joke(r):
 def categories():
     req = urllib.request.Request("http://api.icndb.com/categories")
     try:
-        response = urllib.request.urlopen(req)
+        with urllib.request.urlopen(req) as response:
+            full_json = json.loads(response.read())
     except urllib.error.HTTPError as e:
         print("HTTP Error code: ", e.code)
     except urllib.error.URLError as e:
         print("URL Error Reason: ", e.reason)
     else:
-        full_json = json.loads(response.read())
+        #full_json = json.loads(response.read())
         return full_json['value']
 
 def count():
@@ -65,3 +67,4 @@ elif args.type:
 else:
     j = joke(r="random")
     print(j['joke'])
+
