@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/env python3
 
 #Patterns correctly displayed until input size < 10
 
