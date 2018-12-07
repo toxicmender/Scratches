@@ -1,5 +1,4 @@
-env/
-src/**/*.txt
+**/env/
 src/**/exam*
 src/**/udemy*
 # Swap
